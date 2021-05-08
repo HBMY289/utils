@@ -3,6 +3,9 @@ package io
 import (
 	"fmt"
 	"strconv"
+	"strings"
+
+	"github.com/tyler-smith/go-bip39"
 )
 
 func GetOption(text string, options []string) int {
@@ -70,4 +73,21 @@ func GetString(text string) string {
 	fmt.Printf("%s: ", text)
 	fmt.Scanln(&input)
 	return input
+}
+
+func GetMnemonic(text string, wordCount int) string {
+	words := make([]string, wordCount)
+	var input string
+	fmt.Println(text)
+	for i := 1; i < wordCount; {
+		fmt.Printf("Enter word #d: ", i)
+		fmt.Scanln(&input)
+		if _, ok := bip39.GetWordIndex(input); ok {
+			words[i] = input
+			i += 1
+		} else {
+			fmt.Printf("'%s' is not a valid BIP-39 word.\n")
+		}
+	}
+	return strings.Join(words, " ")
 }

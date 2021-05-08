@@ -80,7 +80,7 @@ func GetMnemonic(text string, wordCount int) string {
 	var input string
 	fmt.Println(text)
 	for i := 1; i < wordCount; {
-		fmt.Printf("Enter word #d: ", i)
+		fmt.Printf("Enter word #%d: ", i)
 		fmt.Scanln(&input)
 		if _, ok := bip39.GetWordIndex(input); ok {
 			words[i] = input

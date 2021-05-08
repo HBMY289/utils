@@ -79,14 +79,14 @@ func GetMnemonic(text string, wordCount int) string {
 	words := make([]string, wordCount)
 	var input string
 	fmt.Println(text)
-	for i := 1; i < wordCount; {
-		fmt.Printf("Enter word #%d: ", i)
+	for i := 0; i < wordCount; {
+		fmt.Printf("Enter word #%d: ", i+1)
 		fmt.Scanln(&input)
 		if _, ok := bip39.GetWordIndex(input); ok {
 			words[i] = input
 			i += 1
 		} else {
-			fmt.Printf("'%s' is not a valid BIP-39 word.\n")
+			fmt.Printf("'%s' is not a valid BIP-39 word.\n", input)
 		}
 	}
 	return strings.Join(words, " ")

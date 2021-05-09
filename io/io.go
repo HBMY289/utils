@@ -91,3 +91,11 @@ func GetMnemonic(text string, wordCount int) string {
 	}
 	return strings.Join(words, " ")
 }
+
+func unquote(text string) string {
+	if len(text) > 1 && text[0] == '"' && text[len(text)-1] == '"' {
+		return text[1 : len(text)-1]
+	} else {
+		return text
+	}
+}

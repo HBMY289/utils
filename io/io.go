@@ -1,4 +1,4 @@
-package main
+package io
 
 import (
 	"fmt"
@@ -8,13 +8,6 @@ import (
 	"github.com/tyler-smith/go-bip39"
 )
 
-func main() {
-	a := "test"
-	b := PadWithSpacesRight(a, 10)
-	fmt.Println("[" + b + "]")
-	b = PadWithSpacesLeft(a, 10)
-	fmt.Println("[" + b + "]")
-}
 func GetOption(text string, options []string) int {
 	var sel string
 
